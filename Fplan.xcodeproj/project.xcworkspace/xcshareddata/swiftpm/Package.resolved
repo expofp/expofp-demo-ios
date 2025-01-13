@@ -1,0 +1,24 @@
+{
+  "originHash" : "655dcc9b566accd8e9610d6cca36d3a8b3624f9921086d2a2afa6bd11423442c",
+  "pins" : [
+    {
+      "identity" : "expofp-common-ios-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/expofp/expofp-common-ios-spm",
+      "state" : {
+        "revision" : "e175892c580ac1d01620c59092a0c557b0d979c2",
+        "version" : "4.8.3"
+      }
+    },
+    {
+      "identity" : "expofp-fplan-ios-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/expofp/expofp-fplan-ios-spm",
+      "state" : {
+        "revision" : "83fd840fc7f38e2832b2e51382caee1e02f6b8ae",
+        "version" : "4.8.3"
+      }
+    }
+  ],
+  "version" : 3
+}
