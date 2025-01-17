@@ -1,5 +1,10 @@
 ## Recommendations for use
 
+The Fplan should be opened once when the application is launched, then the Fplan should be hidden until it is needed. 
+Interaction with the Fplan should only occur using functions (selectBooth(), selectExhibitor(), etc.) and events (onFpReady, onBoothClick, etc.).
+
+Example: https://github.com/expofp/expofp-demo-ios
+
 ```swift
 import SwiftUI
 import ExpoFpFplan
@@ -15,6 +20,7 @@ struct ContentView: View {
         ZStack {
             MenuView(fplanView: fplanView, showFplanView: $showFplanView)
 
+            //When the application starts, showFplanView=false, so the VStack will be hidden until the moment when the plan needs to be displayed.
             VStack {
                 
                 Header(title: "Floorplan") {
@@ -27,7 +33,14 @@ struct ContentView: View {
                     }
                     .onAppear {
                         showProgressView = true
-                        fplanView.load("https://demo.expofp.com")
+                        
+                        //Opening an offline plan
+                        fplanUiView.downloadZipToCache("https://demo.expofp.com") { htmlFilePath, error in 
+                            fplanUiView.openFile(htmlFilePathUrl: filePath, params: "?noOverlay=true", settings: Settings()) 
+                        }
+
+                        //Opening a plan via a URL
+                        //fplanView.load("https://demo.expofp.com")
                     }
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
                     .ignoresSafeArea(.keyboard)
